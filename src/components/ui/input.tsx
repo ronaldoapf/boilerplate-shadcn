@@ -1,8 +1,11 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { withController } from "../with-controller"
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+type InputProps = React.ComponentProps<"input">
+
+export function Input({ className, type, ...props }: InputProps) {
   return (
     <input
       type={type}
@@ -18,4 +21,4 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   )
 }
 
-export { Input }
+export const InputForm = withController<InputProps>(Input)
