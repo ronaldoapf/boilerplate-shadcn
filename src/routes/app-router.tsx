@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout"
-import { Home } from "@/pages/home"
 import { Login } from "@/pages/login"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { routes } from "./routes"
 
 export function AppRouter() {
   return (
@@ -9,7 +9,11 @@ export function AppRouter() {
       <Routes>
         <Route path="/signin" element={<Login />} />
         <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
+          {routes.map(({ route, component: Component }) => {
+            return (
+              <Route path={route} element={<Component />} />
+            )
+          })}
         </Route>
       </Routes>
     </BrowserRouter>
